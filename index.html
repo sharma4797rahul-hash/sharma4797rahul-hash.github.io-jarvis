@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JARVIS AI</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+ background:#020812;
+ color:#00eaff;
+ font-family:Arial,sans-serif;
+ min-height:100vh;
+ overflow-x:hidden;
+}
+
+body:before{
+ content:"";
+ position:fixed;
+ inset:0;
+ pointer-events:none;
+ background:
+ linear-gradient(rgba(0,234,255,.035) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(0,234,255,.035) 1px,transparent 1px);
+ background-size:35px 35px;
+ z-index:-1;
+}
+
+header{
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ padding:18px;
+ border-bottom:1px solid #087d99;
+ background:#031321;
+}
+
+.logo{
+ font-size:23px;
+ font-weight:bold;
+ letter-spacing:5px;
+ text-shadow:0 0 15px #00eaff;
+}
+
+.status{font-size:11px;color:#00ffad}
+
+main{
+ max-width:850px;
+ margin:auto;
+ padding:20px;
+ text-align:center;
+}
+
+h2{
+ font-size:14px;
+ letter-spacing:4px;
+ margin:22px 0 5px;
+}
+
+#clock{
+ font-size:13px;
+ color:#74cbd5;
+}
+
+.reactor{
+ width:250px;
+ height:250px;
+ margin:35px auto 20px;
+ position:relative;
+ display:grid;
+ place-items:center;
+}
+
+.ring{
+ position:absolute;
+ border:2px solid #00dfff;
+ border-radius:50%;
+ box-shadow:0 0 15px #00bfff,inset 0 0 15px #00bfff;
+}
+
+.r1{width:100%;height:100%;border-style:dashed;
+ animation:spin 18s linear infinite}
+
+.r2{width:82%;height:82%;
+ border-color:#087dff;
+ animation:spin 10s linear infinite reverse}
+
+.r3{width:62%;height:62%;
+ border-width:4px;
+ border-color:#00eaff;
+ animation:pulse 2s infinite}
+
+.core{
+ width:38%;
+ height:38%;
+ border-radius:50%;
+ background:radial-gradient(circle,#dfffff,#00cfff 35%,#003b77 75%);
+ box-shadow:0 0 35px #00eaff,0 0 75px #0077ff;
+}
+
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{
+ 50%{transform:scale(1.12);opacity:.7}
+}
+
+.listening .r1,.listening .r2{
+ animation-duration:2s;
+}
+
+.listening .core{
+ box-shadow:0 0 55px #00eaff,0 0 100px #0077ff;
+}
+
+#wave{
+ height:45px;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ gap:5px;
+ margin:15px;
+}
+
+#wave span{
+ width:4px;
+ height:8px;
+ background:#00eaff;
+ border-radius:5px;
+}
+
+.listening #wave span{
+ animation:wave .6s ease-in-out infinite alternate;
+}
+
+#wave span:nth-child(2n){animation-delay:.2s}
+#wave span:nth-child(3n){animation-delay:.4s}
+
+@keyframes wave{
+ to{height:35px;box-shadow:0 0 12px #00eaff}
+}
+
+#status{
+ font-size:13px;
+ color:#a4eefa;
+ margin:12px;
+ min-height:20px;
+}
+
+button,select,input{
+ background:#031b2d;
+ border:1px solid #00cfff;
+ color:#00eaff;
+ padding:13px;
+ border-radius:8px;
+ outline:none;
+}
+
+button{
+ cursor:pointer;
+ transition:.2s;
+}
+
+button:active{
+ transform:scale(.96);
+ background:#07506b;
+}
+
+#mic{
+ width:75px;
+ height:75px;
+ border-radius:50%;
+ font-size:27px;
+ background:#04243b;
+ box-shadow:0 0 20px #008cff;
+}
+
+.controls{
+ display:flex;
+ justify-content:center;
+ flex-wrap:wrap;
+ gap:10px;
+ margin:20px 0;
+}
+
+.panel{
+ background:rgba(0,30,50,.65);
+ border:1px solid #087d99;
+ border-radius:12px;
+ padding:15px;
+ margin:18px 0;
+ text-align:left;
+ box-shadow:0 0 15px #002c44;
+}
+
+.panel h3{
+ font-size:12px;
+ letter-spacing:2px;
+ margin-bottom:12px;
+}
+
+#chat{
+ height:190px;
+ overflow-y:auto;
+ font-size:13px;
+ line-height:1.6;
+}
+
+.msg{margin:10px 0;overflow-wrap:anywhere}
+.user{color:#fff}
+.bot{color:#00eaff}
+
+.inputrow{
+ display:flex;
+ gap:8px;
+}
+
+.inputrow input{flex:1;min-width:0}
+
+.small{
+ font-size:11px;
+ color:#75aeba;
+ line-height:1.6;
+ margin-top:12px;
+}
+
+footer{
+ padding:25px;
+ text-align:center;
+ color:#427b8b;
+ font-size:10px;
+ letter-spacing:2px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="logo">J.A.R.V.I.S</div>
+ <div class="status">● SYSTEM ONLINE</div>
+</header>
+
+<main>
+
+ <h2>JUST A RATHER VERY INTELLIGENT SYSTEM</h2>
+ <div id="clock">INITIALIZING...</div>
+
+ <div class="reactor" id="reactor">
+  <div class="ring r1"></div>
+  <div class="ring r2"></div>
+  <div class="ring r3"></div>
+  <div class="core"></div>
+ </div>
+
+ <div id="wave">
+  <span></span><span></span><span></span>
+  <span></span><span></span><spa
