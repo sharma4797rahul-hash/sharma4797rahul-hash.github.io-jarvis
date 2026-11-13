@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#020812">
 <title>JARVIS AI</title>
 
 <style>
@@ -20,21 +21,21 @@ body:before{
  content:"";
  position:fixed;
  inset:0;
- pointer-events:none;
  background:
  linear-gradient(rgba(0,234,255,.035) 1px,transparent 1px),
  linear-gradient(90deg,rgba(0,234,255,.035) 1px,transparent 1px);
- background-size:35px 35px;
+ background-size:30px 30px;
+ pointer-events:none;
  z-index:-1;
 }
 
 header{
+ padding:18px;
  display:flex;
  justify-content:space-between;
  align-items:center;
- padding:18px;
+ background:#041321;
  border-bottom:1px solid #087d99;
- background:#031321;
 }
 
 .logo{
@@ -44,29 +45,33 @@ header{
  text-shadow:0 0 15px #00eaff;
 }
 
-.status{font-size:11px;color:#00ffad}
+.status{
+ font-size:10px;
+ color:#00ffad;
+}
 
 main{
- max-width:850px;
+ max-width:700px;
  margin:auto;
- padding:20px;
+ padding:18px;
  text-align:center;
 }
 
 h2{
- font-size:14px;
- letter-spacing:4px;
- margin:22px 0 5px;
+ font-size:13px;
+ letter-spacing:3px;
+ margin-top:25px;
 }
 
 #clock{
- font-size:13px;
- color:#74cbd5;
+ font-size:12px;
+ color:#7ebbc8;
+ margin-top:10px;
 }
 
 .reactor{
- width:250px;
- height:250px;
+ width:230px;
+ height:230px;
  margin:35px auto 20px;
  position:relative;
  display:grid;
@@ -75,32 +80,44 @@ h2{
 
 .ring{
  position:absolute;
- border:2px solid #00dfff;
  border-radius:50%;
- box-shadow:0 0 15px #00bfff,inset 0 0 15px #00bfff;
+ border:2px solid #00dfff;
+ box-shadow:0 0 15px #00bfff;
 }
 
-.r1{width:100%;height:100%;border-style:dashed;
- animation:spin 18s linear infinite}
+.r1{
+ width:100%;
+ height:100%;
+ border-style:dashed;
+ animation:spin 15s linear infinite;
+}
 
-.r2{width:82%;height:82%;
+.r2{
+ width:80%;
+ height:80%;
  border-color:#087dff;
- animation:spin 10s linear infinite reverse}
+ animation:spin 9s linear infinite reverse;
+}
 
-.r3{width:62%;height:62%;
+.r3{
+ width:60%;
+ height:60%;
  border-width:4px;
- border-color:#00eaff;
- animation:pulse 2s infinite}
+ animation:pulse 2s infinite;
+}
 
 .core{
  width:38%;
  height:38%;
  border-radius:50%;
- background:radial-gradient(circle,#dfffff,#00cfff 35%,#003b77 75%);
- box-shadow:0 0 35px #00eaff,0 0 75px #0077ff;
+ background:radial-gradient(circle,#fff,#00cfff 40%,#003b77);
+ box-shadow:0 0 40px #00eaff,0 0 80px #0077ff;
 }
 
-@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spin{
+ to{transform:rotate(360deg)}
+}
+
 @keyframes pulse{
  50%{transform:scale(1.12);opacity:.7}
 }
@@ -110,59 +127,56 @@ h2{
 }
 
 .listening .core{
- box-shadow:0 0 55px #00eaff,0 0 100px #0077ff;
+ box-shadow:0 0 65px #00eaff,0 0 110px #0077ff;
 }
 
 #wave{
- height:45px;
  display:flex;
  justify-content:center;
  align-items:center;
  gap:5px;
- margin:15px;
+ height:40px;
 }
 
 #wave span{
  width:4px;
- height:8px;
- background:#00eaff;
+ height:7px;
  border-radius:5px;
+ background:#00eaff;
 }
 
 .listening #wave span{
- animation:wave .6s ease-in-out infinite alternate;
+ animation:wave .5s infinite alternate;
 }
 
 #wave span:nth-child(2n){animation-delay:.2s}
-#wave span:nth-child(3n){animation-delay:.4s}
+#wave span:nth-child(3n){animation-delay:.3s}
 
 @keyframes wave{
- to{height:35px;box-shadow:0 0 12px #00eaff}
+ to{height:35px}
 }
 
 #status{
- font-size:13px;
- color:#a4eefa;
- margin:12px;
+ margin:15px 0;
+ font-size:12px;
+ color:#a7eefa;
  min-height:20px;
 }
 
-button,select,input{
- background:#031b2d;
+button,input,select{
  border:1px solid #00cfff;
+ background:#031b2d;
  color:#00eaff;
- padding:13px;
  border-radius:8px;
- outline:none;
+ padding:12px;
+ font-size:14px;
 }
 
 button{
  cursor:pointer;
- transition:.2s;
 }
 
 button:active{
- transform:scale(.96);
  background:#07506b;
 }
 
@@ -171,20 +185,20 @@ button:active{
  height:75px;
  border-radius:50%;
  font-size:27px;
+ box-shadow:0 0 22px #008cff;
  background:#04243b;
- box-shadow:0 0 20px #008cff;
 }
 
 .controls{
  display:flex;
  justify-content:center;
  flex-wrap:wrap;
- gap:10px;
+ gap:9px;
  margin:20px 0;
 }
 
 .panel{
- background:rgba(0,30,50,.65);
+ background:rgba(0,30,50,.75);
  border:1px solid #087d99;
  border-radius:12px;
  padding:15px;
@@ -200,37 +214,54 @@ button:active{
 }
 
 #chat{
- height:190px;
+ height:210px;
  overflow-y:auto;
  font-size:13px;
  line-height:1.6;
 }
 
-.msg{margin:10px 0;overflow-wrap:anywhere}
-.user{color:#fff}
+.msg{
+ padding:8px;
+ margin:8px 0;
+ border-bottom:1px solid #123b4c;
+ overflow-wrap:anywhere;
+}
+
+.user{color:white}
 .bot{color:#00eaff}
 
 .inputrow{
  display:flex;
  gap:8px;
+ margin-top:12px;
 }
 
-.inputrow input{flex:1;min-width:0}
+.inputrow input{
+ flex:1;
+ min-width:0;
+}
+
+select{
+ width:100%;
+}
 
 .small{
  font-size:11px;
- color:#75aeba;
- line-height:1.6;
- margin-top:12px;
+ color:#83b9c5;
+ line-height:1.7;
 }
 
 footer{
  padding:25px;
- text-align:center;
- color:#427b8b;
  font-size:10px;
  letter-spacing:2px;
+ color:#427b8b;
 }
+
+button:disabled{
+ opacity:.5;
+}
+
 </style>
 </head>
 
@@ -238,21 +269,457 @@ footer{
 
 <header>
  <div class="logo">J.A.R.V.I.S</div>
- <div class="status">● SYSTEM ONLINE</div>
+ <div class="status" id="system">● INITIALIZING</div>
 </header>
 
 <main>
 
- <h2>JUST A RATHER VERY INTELLIGENT SYSTEM</h2>
- <div id="clock">INITIALIZING...</div>
+<h2>JUST A RATHER VERY INTELLIGENT SYSTEM</h2>
+<div id="clock"></div>
 
- <div class="reactor" id="reactor">
-  <div class="ring r1"></div>
-  <div class="ring r2"></div>
-  <div class="ring r3"></div>
-  <div class="core"></div>
+<div class="reactor" id="reactor">
+ <div class="ring r1"></div>
+ <div class="ring r2"></div>
+ <div class="ring r3"></div>
+ <div class="core"></div>
+</div>
+
+<div id="wave">
+ <span></span><span></span><span></span>
+ <span></span><span></span><span></span>
+ <span></span><span></span><span></span>
+ <span></span>
+</div>
+
+<div id="status">JARVIS READY. PRESS THE MICROPHONE.</div>
+
+<button id="mic" onclick="toggleMic()">🎙</button>
+
+<div class="controls">
+ <button onclick="stopListening()">STOP MIC</button>
+ <button onclick="testVoice()">TEST VOICE</button>
+ <button onclick="clearChat()">CLEAR CHAT</button>
+</div>
+
+<div class="panel">
+ <h3>VOICE LANGUAGE</h3>
+ <select id="language">
+  <option value="en-IN">English India</option>
+  <option value="hi-IN">Hindi</option>
+  <option value="en-US">English US</option>
+ </select>
+</div>
+
+<div class="panel">
+ <h3>JARVIS TERMINAL</h3>
+ <div id="chat">
+  <div class="msg bot">
+   JARVIS: Systems initialized. Awaiting your command.
+  </div>
  </div>
 
- <div id="wave">
-  <span></span><span></span><span></span>
-  <span></span><span></span><spa
+ <div class="inputrow">
+  <input id="message" placeholder="Type a command..."
+   autocomplete="off">
+  <button onclick="sendMessage()">SEND</button>
+ </div>
+</div>
+
+<div class="panel">
+ <h3>DIAGNOSTICS</h3>
+ <div id="diagnostics" class="small">
+  Initializing voice engine...
+ </div>
+</div>
+
+<p class="small">
+ JARVIS PERSONAL AI SYSTEM<br>
+ VERSION 2.0
+</p>
+
+</main>
+
+<footer>PERSONAL AI INTERFACE</footer>
+
+<script>
+
+// =================================
+// JARVIS CONFIGURATION
+// =================================
+
+// Leave empty until you have deployed
+// your secure AI backend.
+const AI_ENDPOINT = "";
+
+// =================================
+// ELEMENTS
+// =================================
+
+const $ = id => document.getElementById(id);
+
+let recognition = null;
+let listening = false;
+let busy = false;
+
+const SpeechAPI =
+ window.SpeechRecognition ||
+ window.webkitSpeechRecognition;
+
+const speechAvailable = !!SpeechAPI;
+
+// =================================
+// CLOCK
+// =================================
+
+function clock(){
+ $("clock").textContent =
+ new Date().toLocaleString("en-IN",{
+  weekday:"long",
+  hour:"2-digit",
+  minute:"2-digit",
+  second:"2-digit"
+ });
+}
+
+setInterval(clock,1000);
+clock();
+
+// =================================
+// DIAGNOSTICS
+// =================================
+
+function diagnostics(){
+ $("system").textContent = "● SYSTEM ONLINE";
+
+ $("diagnostics").innerHTML =
+ "Website: Online<br>" +
+ "Secure connection: " +
+ (window.isSecureContext?"HTTPS available":"HTTPS required") +
+ "<br>Speech recognition: " +
+ (speechAvailable?"Available":"Not supported") +
+ "<br>Speech output: " +
+ ("speechSynthesis" in window?"Available":"Unavailable") +
+ "<br>AI backend: " +
+ (AI_ENDPOINT?"Configured":"Not connected");
+}
+
+diagnostics();
+
+// =================================
+// CHAT
+// =================================
+
+function addMessage(sender,text){
+ const div=document.createElement("div");
+
+ div.className="msg "+(sender==="YOU"?"user":"bot");
+ div.textContent=sender+": "+text;
+
+ $("chat").appendChild(div);
+ $("chat").scrollTop=$("chat").scrollHeight;
+}
+
+function clearChat(){
+ $("chat").innerHTML="";
+ addMessage("JARVIS","Terminal cleared. Ready.");
+}
+
+// =================================
+// SPEECH OUTPUT
+// =================================
+
+function speak(text){
+ if(!("speechSynthesis" in window)){
+  $("status").textContent="Speech output unavailable.";
+  return;
+ }
+
+ window.speechSynthesis.cancel();
+
+ const utterance =
+ new SpeechSynthesisUtterance(text);
+
+ utterance.lang=$("language").value;
+ utterance.rate=1;
+ utterance.pitch=1;
+
+ window.speechSynthesis.speak(utterance);
+}
+
+function testVoice(){
+ speak("Hello. JARVIS voice system is operational.");
+}
+
+// =================================
+// MICROPHONE INITIALIZATION
+// =================================
+
+function toggleMic(){
+ if(listening){
+  stopListening();
+  return;
+ }
+
+ if(!window.isSecureContext){
+  $("status").textContent=
+  "HTTPS is required for microphone access.";
+  return;
+ }
+
+ if(!SpeechAPI){
+  $("status").textContent=
+  "Speech recognition is unavailable in this browser.";
+  return;
+ }
+
+ try{
+  recognition=new SpeechAPI();
+
+  recognition.lang=$("language").value;
+  recognition.continuous=false;
+  recognition.interimResults=true;
+  recognition.maxAlternatives=1;
+
+  recognition.onstart=()=>{
+   listening=true;
+   $("reactor").classList.add("listening");
+   $("status").textContent="LISTENING...";
+   $("mic").textContent="⏹";
+  };
+
+  recognition.onresult=(event)=>{
+   let transcript="";
+   let finalResult=false;
+
+   for(let i=event.resultIndex;
+       i<event.results.length;i++){
+
+    transcript+=event.results[i][0].transcript;
+
+    if(event.results[i].isFinal){
+     finalResult=true;
+    }
+   }
+
+   $("status").textContent="HEARD: "+transcript;
+
+   if(finalResult){
+    $("message").value=transcript;
+    stopListening();
+    sendMessage();
+   }
+  };
+
+  recognition.onerror=(event)=>{
+   listening=false;
+   $("reactor").classList.remove("listening");
+   $("mic").textContent="🎙";
+
+   const errors={
+    "not-allowed":"Microphone permission denied. Allow Chrome microphone access.",
+    "audio-capture":"No microphone detected.",
+    "no-speech":"No speech detected. Please try again.",
+    "network":"Speech service network error. Check your internet.",
+    "service-not-allowed":"Speech service blocked by browser."
+   };
+
+   $("status").textContent=
+   errors[event.error] ||
+   "Microphone error: "+event.error;
+  };
+
+  recognition.onend=()=>{
+   listening=false;
+   $("reactor").classList.remove("listening");
+   $("mic").textContent="🎙";
+  };
+
+  recognition.start();
+
+  $("status").textContent="Starting microphone...";
+
+ }catch(error){
+  $("status").textContent=
+  "Cannot start microphone: "+error.message;
+ }
+}
+
+// =================================
+// STOP MICROPHONE
+// =================================
+
+function stopListening(){
+ if(recognition){
+  try{
+   recognition.stop();
+  }catch(e){}
+ }
+
+ listening=false;
+
+ $("reactor").classList.remove("listening");
+ $("mic").textContent="🎙";
+}
+
+// =================================
+// AI + COMMAND ENGINE
+// =================================
+
+async function processCommand(text){
+
+ const t=text.toLowerCase().trim();
+
+ // Local commands
+
+ if(t.includes("hello") ||
+    t.includes("नमस्ते")){
+
+  return "Hello. JARVIS systems are online. How may I assist you?";
+ }
+
+ if(t.includes("who are you") ||
+    t.includes("your name")){
+
+  return "I am JARVIS, your personal AI assistant.";
+ }
+
+ if(t.includes("time")){
+
+  return "The current time is "+
+  new Date().toLocaleTimeString("en-IN");
+ }
+
+ if(t.includes("date")){
+
+  return "Today is "+
+  new Date().toLocaleDateString("en-IN");
+ }
+
+ if(t.includes("open youtube")){
+
+  window.location.href="https://www.youtube.com";
+  return "Opening YouTube.";
+ }
+
+ if(t.includes("open google")){
+
+  window.location.href="https://www.google.com";
+  return "Opening Google.";
+ }
+
+ if(t.includes("open github")){
+
+  window.location.href="https://github.com";
+  return "Opening GitHub.";
+ }
+
+ if(t==="stop speaking"){
+
+  window.speechSynthesis.cancel();
+  return "Voice output stopped.";
+ }
+
+ // Real AI connection
+
+ if(!AI_ENDPOINT){
+
+  return "I can hear you, but my AI brain is not connected yet. Please configure the secure AI backend.";
+ }
+
+ try{
+
+  const response=await fetch(AI_ENDPOINT,{
+   method:"POST",
+   headers:{
+    "Content-Type":"application/json"
+   },
+   body:JSON.stringify({
+    message:text
+   })
+  });
+
+  if(!response.ok){
+   throw new Error("Server error "+response.status);
+  }
+
+  const data=await response.json();
+
+  if(typeof data.reply!=="string"){
+   throw new Error("Invalid server response");
+  }
+
+  return data.reply;
+
+ }catch(error){
+
+  console.error(error);
+
+  return "I could not reach my AI brain. Please check your internet connection or backend.";
+ }
+}
+
+// =================================
+// SEND MESSAGE
+// =================================
+
+async function sendMessage(){
+
+ if(busy)return;
+
+ const input=$("message");
+ const text=input.value.trim();
+
+ if(!text)return;
+
+ input.value="";
+
+ addMessage("YOU",text);
+
+ busy=true;
+ $("status").textContent="PROCESSING...";
+
+ try{
+
+  const answer=await processCommand(text);
+
+  addMessage("JARVIS",answer);
+  speak(answer);
+
+  $("status").textContent="READY.";
+
+ }catch(error){
+
+  $("status").textContent="COMMAND ERROR.";
+  addMessage("JARVIS","Something went wrong.");
+
+ }finally{
+  busy=false;
+ }
+}
+
+// =================================
+// ENTER KEY
+// =================================
+
+$("message").addEventListener("keydown",event=>{
+ if(event.key==="Enter"){
+  sendMessage();
+ }
+});
+
+$("language").addEventListener("change",()=>{
+ if(recognition && listening){
+  stopListening();
+ }
+});
+
+// =================================
+// STARTUP
+// =================================
+
+$("status").textContent=
+ "JARVIS ONLINE. PRESS THE MICROPHONE.";
+
+</script>
+</body>
+</html>
